@@ -1,0 +1,20 @@
+p{
+    border: 3px rgb(47, 14, 195) solid;
+  border-top-left-radius: 20px ;
+  border-bottom-right-radius:20px ;
+  box-shadow: 2px 2px gray;
+  
+    display: flex;
+    justify-content: center;
+   align-items: center;
+    height: 40px;
+}
+.div_1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  
+    gap: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 25px;
+}
