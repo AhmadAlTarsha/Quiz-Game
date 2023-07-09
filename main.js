@@ -1,32 +1,34 @@
+//project one:
+
 //this is the array of questions
 // that i need it for my game
 const questions = [
     {
         id: 1,
         q: "What is the name of the longest river in South America?",
-        answers: ["Amazon River", "Cuanza River", "Kasai River", "Oti River"],
+        answers: ["Amazon River", "Cuanza River", "Kasai River", , "Oti River"],
         correctAnswer: "Amazon River",
     },
     {
         id: 2,
         q: " What's the name of a place you go to see lots of animals?",
-        answers: ["The Hotel", "The Coffe House", "The zoo", "The Cinema"],
+        answers: ["The Hotel", "The zoo", "The Coffe House", "The Cinema"],
         correctAnswer: "The zoo",
     },
     {
         id: 3,
         q: " How many legs does a spider have?",
-        answers: ["Eight", "Tow", "three", "one"],
+        answers: ["Tow", "three", "Eight", "one"],
         correctAnswer: "Eight",
     },
     {
         id: 4,
         q: "Where does Santa Claus live?",
-        answers: ["The North Pole", "Jordan", "Usa", "Brizel"],
+        answers: ["Jordan", "Usa", "Brizel", "The North Pole"],
         correctAnswer: "The North Pole",
     },
 ];
-//first step i need to create a body bu using Dom to holds all the HTML tags that i create it,
+//first step i need to create a body by using Dom to holds all the HTML tags that i create it,
 // second step i need to create a (div) by using Dom,
 // inside this div p (this p must be holds a paragraph as a question) 
 //and another div_1  this div (must be holds a four buttons as a qustions),
@@ -38,67 +40,68 @@ const questions = [
 // then i must do the right design to display it 
 const body = document.querySelector("body")
 const div = document.createElement("div")
-const div_1 = document.createElement("div")
-const p = document.createElement("p")
 body.append(div)
-div.append(p)
-div.append(div_1)
-div_1.className = "div_1"
-const button_1 = document.createElement("button")
-const button_2 = document.createElement("button")
-const button_3 = document.createElement("button")
-const button_4 = document.createElement("button")
-button_1.innerText = "change q"
+const viewQuestion =  (indexofArray)=> {
+    const p = document.createElement("p")
+    div.append(p)
+    p.innerText = questions[indexofArray].q
+    const div_1 = document.createElement("div")
+    div.append(div_1)
+    div_1.className = "div_1"
+    questions[indexofArray].answers.forEach((answers, i) => {
+        const button = document.createElement("button")
+        div_1.append(button)
+        button.innerText = answers
+        button.className = "button"
+        if (button.innerText === questions[indexofArray].correctAnswer) {
+            button.id = "coorect"
+            button.className = "true"
+        }
 
-div_1.append(button_1)
-div_1.append(button_2)
-div_1.append(button_3)
-div_1.append(button_4)
+       const  trueorfalse=()=> {
 
-
-let QuestionCount = 0
-for (let index = 0; index < questions.length; index++) {
-    
-    p.innerText = questions[QuestionCount].q
-    
-   QuestionCount+=index 
-
-
+            document.getElementById("coorect").style.backgroundColor = "green",disabled=true
+           // document.getElementById("coorect").disabled = true
+            document.querySelectorAll(".button").forEach((ele, i) => {
+                ele.disabled = true
+                ele.style.backgroundColor = "red"
+            })
+        }
+        button.addEventListener("click", trueorfalse)
+    })
 }
-const changequestion = () => {
-    if (questions[0].answers[0]===questions[0].correctAnswer) {
-       p.innerHTML=""   
-      p.innerText = questions[QuestionCount].q     
-    console.log(questions[QuestionCount].q);
-     
-    } 
-   
+viewQuestion(0)
+
+let nextquestion = 0
+
+const changeQuestion = () => {
+    nextquestion++
+    if (nextquestion < questions.length) {
+        div.innerHTML = ""
+        viewQuestion(nextquestion)
+    } else {
+        nextButton.innerText = "the end"
+        div.innerHTML = ""
+        const h2 = document.createElement("h2")
+        body.append(h2)
+        h2.innerText = "your scoore is :"
+        nextButton.disabled = true
+    }
 }
- button_1.addEventListener("click", changequestion)
 
-
-
-
-
-
-
-
-/*
-questions.forEach(function(ele,i){
-ele.answers.forEach(function(ele2,ind){
-    console.log(ele2);
-})
-})*/
-
-
-
-
-/*//create the main function (questionsFUN) that holds the array (Qusestion) as an argument
-//to make the change dinamic
-const questionsFUN=(arrayOfQuestion)=>{
-for (let index = 0; index < arrayOfQuestion.length; index++) {
-   console.log(arrayOfQuestion[index]);
-    
+const nextButton = document.createElement("button")
+body.append(nextButton)
+nextButton.innerText = "next"
+nextButton.className = "nextButton"
+if (document.querySelectorAll(".button").forEach((ele)=>{ele.innerText=""||ele.innerText==undefined})) {
+    const off=()=>{
+        nextButton.disabled=true
+    }
+    nextButton.addEventListener("click",disabled)
 }
-}
-questionsFUN(questions)*/
+nextButton.addEventListener("click", changeQuestion)
+
+
+/*console.log(button.className);
+
+*/
