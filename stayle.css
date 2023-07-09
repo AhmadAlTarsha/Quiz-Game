@@ -1,44 +1,49 @@
-
-p{
-    border: 2px purple solid;
+p {
+  border: 2px purple solid;
   border-radius: 15px;
-  outline: pink  solid;
+  outline: pink solid;
   outline-width: 10px;
-outline-offset: 2px;
-  
- 
+  outline-offset: 2px;
 
-  box-shadow:  rgb(187, 22, 118);
-    display: flex;
-    justify-content: center;
-   align-items: center;
-    height: 50px;
+  box-shadow: rgb(187, 22, 118);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
 }
-.div_1{
-    display: grid;
-    grid-template-columns: 1fr 1fr  ;
-    gap:30px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 25px;
-}
-.nextButton{float: right;
+.div_1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 25px;
 }
 
-button{
+button {
   height: 30px;
   border: 2px blue solid;
   border-radius: 15px;
-  outline: blue  solid;
-  outline-width:3px;
-outline-offset: 2px;
+  outline: blue solid;
+  outline-width: 3px;
+  outline-offset: 2px;
 }
-.nextButton{
- float: right;
-  background-color: red;
+.nextButton {
+  background-color: white;
   border: 2px maroon solid;
-  outline: brown  solid;
+  outline: brown solid;
 }
-.check{
+.check {
   float: left;
+}
+.div_2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.div_3 {
+  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

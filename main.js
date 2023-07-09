@@ -39,19 +39,33 @@ const questions = [
 //then use a miltepule class fo all tags to full controls of it
 // then i must do the right design to display it 
 const body = document.querySelector("body")
+const div_2 = document.querySelector(".div_2")
 const div = document.createElement("div")
+
+
+
+const div_3 = document.createElement("div")
 body.append(div)
+// body.append(div_2)
+body.append(div_3)
+// div_2.className = "div_2"
+div_3.className = "div_3"
 const check = document.createElement("h2")
-body.append(check)
+div_2.append(check)
 check.innerText = "your answer is: "
 const check_1 = document.createElement("h2")
-body.append(check_1)
-check_1.className="check"
-check.className="check"
-check_1.innerText = ""
+div_2.append(check_1)
 
+check_1.innerText = ""
+const nextButton = document.querySelector(".next")
+// div_2.append(nextButton)
+nextButton.innerText = "next"
+// nextButton.className = "nextButton"
+//this scorre to sum your gride Depending on the num of true answer
+let scoore = 0
 //--------render function 
 const viewQuestion = (indexofArray) => {
+    nextButton.disabled = true
     const p = document.createElement("p")
     div.append(p)
     p.innerText = questions[indexofArray].q
@@ -65,29 +79,33 @@ const viewQuestion = (indexofArray) => {
         button.className = "button"
         if (button.innerText === questions[indexofArray].correctAnswer) {
             button.id = "coorect"
-            button.className = "true"   
+            button.className = "true"
         }
 
 
         const checkfun = function () {
-            
+
             if (button.innerText === questions[indexofArray].correctAnswer) {
+                scoore++
+                // console.log(scoore);
                 check_1.innerText = "true"
-            }else{check_1.innerText = "false" }
+            } else { check_1.innerText = "false" }
         }
 
-//-----this fun spilt the true and false answer
-// then i give the true or false answer diffirant class or id 
-// then i give each of them diffirant proparety
+        //-----this fun spilt the true and false answer
+        // then i give the true or false answer diffirant class or id 
+        // then i give each of them diffirant proparety
         const trueOrfalse = () => {
-
-            document.getElementById("coorect").style.backgroundColor = "green", disabled = true
-            document.querySelectorAll(".button").forEach((ele, i) => {
+            nextButton.disabled = false
+            document.getElementById("coorect").style.backgroundColor = "green",
+                document.getElementById("coorect").disabled = true
+            document.querySelectorAll(".button").forEach((ele) => {
                 ele.disabled = true
                 ele.style.backgroundColor = "red"
             })
+
         }
-        button.addEventListener("click", trueOrfalse)
+        button.addEventListener("click", trueOrfalse)//mice inaple
         button.addEventListener("click", checkfun)
     })
 }
@@ -99,36 +117,58 @@ let nextquestion = 0
 // and pass this num to the render fun to display the elemnt of all array of question
 
 const changeQuestion = () => {
+    nextButton.disabled = true
     nextquestion++
     if (nextquestion < questions.length) {
         div.innerHTML = ""
         // here i passed the num to render fun
         viewQuestion(nextquestion)
-        
-    // this condition to ensure if the num was greater of question array end the game
+
+        // this condition to ensure if the num was greater of question array end the game
     } else {
-        nextButton.innerText = "the end"
+        div_2.style.display="none"
         div.innerHTML = ""
+        //div_2.style.display=none
         const h2 = document.createElement("h2")
-        body.append(h2)
-        h2.innerText = "your scoore is :"
-        nextButton.disabled = true
-        check.innerHTML=""
-        
+        div_3.append(h2)
+        h2.innerText = `your scoore is : ${scoore}/${questions.length}`
+        const h2_1 = document.createElement("h2")
+        div_3.append(h2_1)
+        h2_1.innerText = ""
+        if (scoore == questions.length) {
+            h2_1.innerText = "you are grate you gut full mark"
+        } else if (scoore > (questions.length * 0.5)) {
+            h2_1.innerText = "you are not bad"
+        } else { h2_1.innerText = "you are failed" }
+
+        const playAgineButton = document.createElement("button")
+        div_3.append(playAgineButton)
+        playAgineButton.innerText = "play agine"
+        playAgineButton.addEventListener("click", () => {
+         
+          div_2.style.display="flex"
+          nextquestion=0
+   div_3.innerHTML=""    
+   viewQuestion(0)
+   scoore=0      
+
+ //div_2.innerHTML=""
+       
+ 
+           
+        })
     }
+
 }
 // ------this fun for display (h2) that represent the ansewr is true or false
-const veiewTruOrFalse=()=> {
-    console.log(check_1.innerText);
-    check_1.innerHTML=""
+const veiewTruOrFalse = () => {
+    // console.log(check_1.innerText);
+    check_1.innerHTML = ""
 }
-const nextButton = document.createElement("button")
-body.append(nextButton)
-nextButton.innerText = "next"
-nextButton.className = "nextButton"
+
 nextButton.addEventListener("click", changeQuestion)
-nextButton.addEventListener("click",veiewTruOrFalse )
+nextButton.addEventListener("click", veiewTruOrFalse)
 
-
+console.log(document.querySelector(".div_2"));
 /*
 */
