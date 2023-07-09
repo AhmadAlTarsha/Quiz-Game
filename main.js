@@ -41,7 +41,17 @@ const questions = [
 const body = document.querySelector("body")
 const div = document.createElement("div")
 body.append(div)
-const viewQuestion =  (indexofArray)=> {
+const check = document.createElement("h2")
+body.append(check)
+check.innerText = "your answer is: "
+const check_1 = document.createElement("h2")
+body.append(check_1)
+check_1.className="check"
+check.className="check"
+
+check_1.innerText = ""
+
+const viewQuestion = (indexofArray) => {
     const p = document.createElement("p")
     div.append(p)
     p.innerText = questions[indexofArray].q
@@ -56,18 +66,26 @@ const viewQuestion =  (indexofArray)=> {
         if (button.innerText === questions[indexofArray].correctAnswer) {
             button.id = "coorect"
             button.className = "true"
+            // check_1.innerText="ahmad"
         }
 
-       const  trueorfalse=()=> {
+        const checkfun = function () {
+            if (button.innerText === questions[indexofArray].correctAnswer) {
+                check_1.innerText = "true"
+            }else{check_1.innerText = "false" }
+        }
 
-            document.getElementById("coorect").style.backgroundColor = "green",disabled=true
-           // document.getElementById("coorect").disabled = true
+        const trueorfalse = () => {
+
+            document.getElementById("coorect").style.backgroundColor = "green", disabled = true
+            // document.getElementById("coorect").disabled = true
             document.querySelectorAll(".button").forEach((ele, i) => {
                 ele.disabled = true
                 ele.style.backgroundColor = "red"
             })
         }
         button.addEventListener("click", trueorfalse)
+        button.addEventListener("click", checkfun)
     })
 }
 viewQuestion(0)
@@ -75,9 +93,12 @@ viewQuestion(0)
 let nextquestion = 0
 
 const changeQuestion = () => {
+
+
     nextquestion++
     if (nextquestion < questions.length) {
         div.innerHTML = ""
+        
         viewQuestion(nextquestion)
     } else {
         nextButton.innerText = "the end"
@@ -86,20 +107,24 @@ const changeQuestion = () => {
         body.append(h2)
         h2.innerText = "your scoore is :"
         nextButton.disabled = true
+        check.innerHTML=""
+        
     }
 }
+const a=()=> {
+    console.log(check_1.innerText);
+ //document.querySelector(".check_1").innerHTML=""
+    check_1.innerHTML=""
+   
+}
+
 
 const nextButton = document.createElement("button")
 body.append(nextButton)
 nextButton.innerText = "next"
 nextButton.className = "nextButton"
-if (document.querySelectorAll(".button").forEach((ele)=>{ele.innerText=""||ele.innerText==undefined})) {
-    const off=()=>{
-        nextButton.disabled=true
-    }
-    nextButton.addEventListener("click",disabled)
-}
 nextButton.addEventListener("click", changeQuestion)
+nextButton.addEventListener("click",a )
 
 
 /*console.log(button.className);
