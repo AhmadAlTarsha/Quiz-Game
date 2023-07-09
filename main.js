@@ -31,12 +31,12 @@ const questions = [
 //first step i need to create a body by using Dom to holds all the HTML tags that i create it,
 // second step i need to create a (div) by using Dom,
 // inside this div p (this p must be holds a paragraph as a question) 
-//and another div_1  this div (must be holds a four buttons as a qustions),
-/* the draw is <div><p>qustions</p>
- <div><button>answre1</button>
-<button>answre1</button><button>answre1</button>
-<button>answre1</button></div></div>*/
-//then use a miltebul class fo all tags to fuul controls of it
+//and another div_1  this div (must be holds  buttons as a qustions),
+// then create main fun to controle from what i need to build the logic
+//then i need Mainly 1-fun to render the code 2-fun to change the question
+//3-fun to sum the score 4- fun to know the answer is true or false
+//5-
+//then use a miltepule class fo all tags to full controls of it
 // then i must do the right design to display it 
 const body = document.querySelector("body")
 const div = document.createElement("div")
@@ -48,9 +48,9 @@ const check_1 = document.createElement("h2")
 body.append(check_1)
 check_1.className="check"
 check.className="check"
-
 check_1.innerText = ""
 
+//--------render function 
 const viewQuestion = (indexofArray) => {
     const p = document.createElement("p")
     div.append(p)
@@ -58,48 +58,54 @@ const viewQuestion = (indexofArray) => {
     const div_1 = document.createElement("div")
     div.append(div_1)
     div_1.className = "div_1"
-    questions[indexofArray].answers.forEach((answers, i) => {
+    questions[indexofArray].answers.forEach((answers) => {
         const button = document.createElement("button")
         div_1.append(button)
         button.innerText = answers
         button.className = "button"
         if (button.innerText === questions[indexofArray].correctAnswer) {
             button.id = "coorect"
-            button.className = "true"
-            // check_1.innerText="ahmad"
+            button.className = "true"   
         }
 
+
         const checkfun = function () {
+            
             if (button.innerText === questions[indexofArray].correctAnswer) {
                 check_1.innerText = "true"
             }else{check_1.innerText = "false" }
         }
 
-        const trueorfalse = () => {
+//-----this fun spilt the true and false answer
+// then i give the true or false answer diffirant class or id 
+// then i give each of them diffirant proparety
+        const trueOrfalse = () => {
 
             document.getElementById("coorect").style.backgroundColor = "green", disabled = true
-            // document.getElementById("coorect").disabled = true
             document.querySelectorAll(".button").forEach((ele, i) => {
                 ele.disabled = true
                 ele.style.backgroundColor = "red"
             })
         }
-        button.addEventListener("click", trueorfalse)
+        button.addEventListener("click", trueOrfalse)
         button.addEventListener("click", checkfun)
     })
 }
+// here i will exicute the render fun and give it 0 index to display first element of (question array)
 viewQuestion(0)
-
 let nextquestion = 0
 
+//----- this fun tack a num that i declerate it and add 1 evey when i exicute it
+// and pass this num to the render fun to display the elemnt of all array of question
+
 const changeQuestion = () => {
-
-
     nextquestion++
     if (nextquestion < questions.length) {
         div.innerHTML = ""
-        
+        // here i passed the num to render fun
         viewQuestion(nextquestion)
+        
+    // this condition to ensure if the num was greater of question array end the game
     } else {
         nextButton.innerText = "the end"
         div.innerHTML = ""
@@ -111,22 +117,18 @@ const changeQuestion = () => {
         
     }
 }
-const a=()=> {
+// ------this fun for display (h2) that represent the ansewr is true or false
+const veiewTruOrFalse=()=> {
     console.log(check_1.innerText);
- //document.querySelector(".check_1").innerHTML=""
     check_1.innerHTML=""
-   
 }
-
-
 const nextButton = document.createElement("button")
 body.append(nextButton)
 nextButton.innerText = "next"
 nextButton.className = "nextButton"
 nextButton.addEventListener("click", changeQuestion)
-nextButton.addEventListener("click",a )
+nextButton.addEventListener("click",veiewTruOrFalse )
 
 
-/*console.log(button.className);
-
+/*
 */
