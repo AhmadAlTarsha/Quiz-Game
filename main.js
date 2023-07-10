@@ -40,12 +40,13 @@ const questions = [
 // then i must do the right design to display it 
 const body = document.querySelector("body")
 const div_2 = document.querySelector(".div_2")
-const div = document.createElement("div")
+const div = document.querySelector(".box")
 
 
 
 const div_3 = document.createElement("div")
-body.append(div)
+// body.append(div)
+// div.c
 // body.append(div_2)
 body.append(div_3)
 // div_2.className = "div_2"
@@ -169,6 +170,22 @@ const veiewTruOrFalse = () => {
 nextButton.addEventListener("click", changeQuestion)
 nextButton.addEventListener("click", veiewTruOrFalse)
 
-console.log(document.querySelector(".div_2"));
+
 /*
 */
+const soundbutton=document.createElement("button")
+body.append(soundbutton)
+soundbutton.innerText="play audio"
+
+const makesounde=()=>{
+   const sound =document.createElement("audio")
+   
+  // sound.setAttribute("controls", "controls");
+   body.append(sound);
+   sound.setAttribute("controls", "controls");
+sound.setAttribute("src",("./coorectAnswer.wav"))
+document.querySelector("audio").oncanplay
+}
+soundbutton.addEventListener("click", makesounde)
+
+
