@@ -47,3 +47,7 @@ button {
   justify-content: space-around;
   align-items: center;
 }
+.countDown{
+  display: flex;
+  justify-content: center;
+}

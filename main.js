@@ -41,7 +41,21 @@ const questions = [
 const body = document.querySelector("body")
 const div_2 = document.querySelector(".div_2")
 const div = document.querySelector(".box")
-
+let countdown= 3
+const timeOver=setInterval(()=>{
+    countdown--
+    document.querySelector(".countDown").innerText=countdown 
+    if (countdown===0) {
+        document.querySelector(".box").innerHTML=""
+        document.querySelector(".div_2").innerHTML=""
+     const resuilt=document.createElement("p")
+     body.append(resuilt)
+     resuilt.innerHTML=` time over your scoore is ${scoore}`
+clearInterval(timeOver)
+ document.querySelector(".box").style.d="none"     
+ document.querySelector(".countDown").innerText="" 
+    }
+},1000)
 
 
 const div_3 = document.createElement("div")
@@ -92,17 +106,15 @@ const viewQuestion = (indexofArray) => {
                 new Audio("./coorectAnswer.wav").play()
                 // console.log(scoore);
                 check_1.innerText = "true"
-            } else {
-                check_1.innerText = "false"
-                new Audio("./wrongAnswer.wav").play()
-            }
+            } else { check_1.innerText = "false"
+            new Audio("./wrongAnswer.wav").play() }
         }
 
         //-----this fun spilt the true and false answer
         // then i give the true or false answer diffirant class or id 
         // then i give each of them diffirant proparety
         const trueOrfalse = () => {
-
+          
             nextButton.disabled = false
             document.getElementById("coorect").style.backgroundColor = "green",
                 document.getElementById("coorect").disabled = true
@@ -133,7 +145,7 @@ const changeQuestion = () => {
 
         // this condition to ensure if the num was greater of question array end the game
     } else {
-        div_2.style.display = "none"
+        div_2.style.display="none"
         div.innerHTML = ""
         //div_2.style.display=none
         const h2 = document.createElement("h2")
@@ -152,20 +164,20 @@ const changeQuestion = () => {
         div_3.append(playAgineButton)
         playAgineButton.innerText = "play agine"
         playAgineButton.addEventListener("click", () => {
-            new Audio("./playAgine.wav").play()
-            div_2.style.display = "flex"
-            nextquestion = 0
-            div_3.innerHTML = ""
-            viewQuestion(0)
-            scoore = 0
+         new Audio("./playAgine.wav").play()
+          div_2.style.display="flex"
+          nextquestion=0
+   div_3.innerHTML=""    
+   viewQuestion(0)
+   scoore=0      
 
-            //div_2.innerHTML=""
-
-
-
+ //div_2.innerHTML=""
+       
+ 
+           
         })
     }
-
+    
 }
 // ------this fun for display (h2) that represent the ansewr is true or false
 const veiewTruOrFalse = () => {
@@ -175,8 +187,8 @@ const veiewTruOrFalse = () => {
 
 nextButton.addEventListener("click", changeQuestion)
 nextButton.addEventListener("click", veiewTruOrFalse)
-nextButton.addEventListener("click", () => {
-    const audio = new Audio("./next.wav").play()
+nextButton.addEventListener("click", ()=>{
+    const audio=new Audio("./next.wav").play()
 })
 
 
