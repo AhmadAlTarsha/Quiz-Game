@@ -59,8 +59,9 @@ div_2.append(check_1)
 
 check_1.innerText = ""
 const nextButton = document.querySelector(".next")
-// div_2.append(nextButton)
 nextButton.innerText = "next"
+// div_2.append(nextButton)
+
 // nextButton.className = "nextButton"
 //this scorre to sum your gride Depending on the num of true answer
 let scoore = 0
@@ -88,15 +89,20 @@ const viewQuestion = (indexofArray) => {
 
             if (button.innerText === questions[indexofArray].correctAnswer) {
                 scoore++
+                new Audio("./coorectAnswer.wav").play()
                 // console.log(scoore);
                 check_1.innerText = "true"
-            } else { check_1.innerText = "false" }
+            } else {
+                check_1.innerText = "false"
+                new Audio("./wrongAnswer.wav").play()
+            }
         }
 
         //-----this fun spilt the true and false answer
         // then i give the true or false answer diffirant class or id 
         // then i give each of them diffirant proparety
         const trueOrfalse = () => {
+
             nextButton.disabled = false
             document.getElementById("coorect").style.backgroundColor = "green",
                 document.getElementById("coorect").disabled = true
@@ -127,7 +133,7 @@ const changeQuestion = () => {
 
         // this condition to ensure if the num was greater of question array end the game
     } else {
-        div_2.style.display="none"
+        div_2.style.display = "none"
         div.innerHTML = ""
         //div_2.style.display=none
         const h2 = document.createElement("h2")
@@ -146,17 +152,17 @@ const changeQuestion = () => {
         div_3.append(playAgineButton)
         playAgineButton.innerText = "play agine"
         playAgineButton.addEventListener("click", () => {
-         
-          div_2.style.display="flex"
-          nextquestion=0
-   div_3.innerHTML=""    
-   viewQuestion(0)
-   scoore=0      
+            new Audio("./playAgine.wav").play()
+            div_2.style.display = "flex"
+            nextquestion = 0
+            div_3.innerHTML = ""
+            viewQuestion(0)
+            scoore = 0
 
- //div_2.innerHTML=""
-       
- 
-           
+            //div_2.innerHTML=""
+
+
+
         })
     }
 
@@ -169,23 +175,13 @@ const veiewTruOrFalse = () => {
 
 nextButton.addEventListener("click", changeQuestion)
 nextButton.addEventListener("click", veiewTruOrFalse)
+nextButton.addEventListener("click", () => {
+    const audio = new Audio("./next.wav").play()
+})
 
 
-/*
-*/
-const soundbutton=document.createElement("button")
-body.append(soundbutton)
-soundbutton.innerText="play audio"
 
-const makesounde=()=>{
-   const sound =document.createElement("audio")
-   
-  // sound.setAttribute("controls", "controls");
-   body.append(sound);
-   sound.setAttribute("controls", "controls");
-sound.setAttribute("src",("./coorectAnswer.wav"))
-document.querySelector("audio").oncanplay
-}
-soundbutton.addEventListener("click", makesounde)
+
+
 
 
