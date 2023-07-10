@@ -41,23 +41,47 @@ const questions = [
 const body = document.querySelector("body")
 const div_2 = document.querySelector(".div_2")
 const div = document.querySelector(".box")
-let countdown= 3
-const timeOver=setInterval(()=>{
-    countdown--
-    document.querySelector(".countDown").innerText=countdown 
-    if (countdown===0) {
-        document.querySelector(".box").innerHTML=""
-        document.querySelector(".div_2").innerHTML=""
-     const resuilt=document.createElement("p")
-     body.append(resuilt)
-     resuilt.innerHTML=` time over your scoore is ${scoore}`
-clearInterval(timeOver)
- document.querySelector(".box").style.d="none"     
- document.querySelector(".countDown").innerText="" 
-    }
-},1000)
-
-
+let countdown= 5
+let timeOver
+const startTimeer=()=>{
+     timeOver=setInterval(()=>{
+        countdown--
+        document.querySelector(".countDown").innerText=countdown 
+        if (countdown===0) {
+            div.style.display="none"
+          div_2.style.display="none"
+         const resuilt=document.createElement("p")
+         body.append(resuilt)
+         resuilt.innerHTML=` time over your scoore is ${scoore}`
+    clearInterval(timeOver)
+   //  document.querySelector(".box").style.d="none"     
+     document.querySelector(".countDown").innerText="" 
+     //new Audio("./wrongAnswer.wav").play()
+     const startAgine=document.createElement("button")
+     body.append(startAgine)
+     startAgine.id="sb"
+     startAgine.innerText="go to main "
+     startAgine.addEventListener("click",()=>{
+        startAgine.remove()
+        resuilt.remove()
+          div_3.innerHTML="" 
+        new Audio("./playAgine.wav").play()
+          div_2.style.display="flex"
+          div.style.display="grid"
+          console.log(div_2);
+          nextquestion=0
+    
+   
+   countdown=5
+   startTimeer()
+   scoore=0      
+        
+    
+     })
+        }
+    },1000)
+}
+startTimeer()
 const div_3 = document.createElement("div")
 // body.append(div)
 // div.c
@@ -139,13 +163,17 @@ const changeQuestion = () => {
     nextButton.disabled = true
     nextquestion++
     if (nextquestion < questions.length) {
+        
         div.innerHTML = ""
         // here i passed the num to render fun
         viewQuestion(nextquestion)
 
         // this condition to ensure if the num was greater of question array end the game
     } else {
-        div_2.style.display="none"
+        clearInterval(timeOver)
+        countdown =20
+        document.querySelector("h3").innerText=""
+       
         div.innerHTML = ""
         //div_2.style.display=none
         const h2 = document.createElement("h2")
@@ -169,6 +197,8 @@ const changeQuestion = () => {
           nextquestion=0
    div_3.innerHTML=""    
    viewQuestion(0)
+   
+   startTimeer()
    scoore=0      
 
  //div_2.innerHTML=""
@@ -188,7 +218,7 @@ const veiewTruOrFalse = () => {
 nextButton.addEventListener("click", changeQuestion)
 nextButton.addEventListener("click", veiewTruOrFalse)
 nextButton.addEventListener("click", ()=>{
-    const audio=new Audio("./next.wav").play()
+
 })
 
 
