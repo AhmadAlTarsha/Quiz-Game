@@ -80,13 +80,14 @@ const questions = [
 // then i must do the right design to display it 
 const body = document.querySelector("body")
 
-//body.style.display="none"
+/////////////////////body.style.display="none"
 
 
 const div_2 = document.querySelector(".div_2")
 const div = document.querySelector(".box")
-let countdown = 15
+let countdown = 20
 let timeOver
+let plyer_name=","
 const startTimeer = () => {
     timeOver = setInterval(() => {
         countdown--
@@ -97,7 +98,7 @@ const startTimeer = () => {
             div_2.style.display = "none"
             const resuilt = document.createElement("p")
             body.append(resuilt)
-            resuilt.innerHTML = ` Game time is over, Your score Is : ${score}`
+            resuilt.innerHTML = ` Game time is over${plyer_name} Your score Is : ${score}`
             clearInterval(timeOver)
             //  document.querySelector(".box").style.d="none"     
             document.querySelector(".countDown").innerText = ""
@@ -119,11 +120,39 @@ const startTimeer = () => {
                 nextquestion = 0
 
 
-                countdown = 15
-                startTimeer()
+                countdown = 20
+               // startTimeer()
                 score = 0
                 viewQuestion(0)
                 document.querySelector("#trueOrFalse").innerHTML = ""
+                div_2.style.display="none"
+                div_3.style.display="none"
+                div.style.display="none"
+                const welcome_screen=document.createElement("div")
+                body.append(welcome_screen)
+                welcome_screen.className="welcome"
+                const welcome_p=document.createElement("h4")
+                welcome_screen.append(welcome_p)
+                welcome_p.innerText="lorem"
+                const input=document.createElement("input")
+                const lapel=document.createElement("label")
+                welcome_screen.append(lapel)
+                lapel.innerText="write Your Name"
+                welcome_screen.append(input)
+                input.placeholder="Optional   Field"
+                plyer_name=input.value
+                const go =document.createElement("button")
+                welcome_screen.append(go)
+                go.innerText="GO"
+go.addEventListener("click",()=>{
+    div_2.style.display="flex"
+    div_3.style.display="grid"
+    div.style.display="grid"
+    startTimeer()
+    welcome_screen.innerHTML=""
+})
+
+                console.log(welcome_screen.innerHTML);
             })
         }
     }, 1000)
@@ -221,7 +250,7 @@ const changeQuestion = () => {
         // this condition to ensure if the num was greater of question array end the game
     } else {
         clearInterval(timeOver)
-        countdown = 15
+        countdown = 20
         document.querySelector("h3").innerText = ""
         div_2.style.display = "none"
         div.innerHTML = ""
@@ -234,10 +263,10 @@ const changeQuestion = () => {
         div_3.append(h2_1)
         h2_1.innerText = ""
         if (score == questions.length) {
-            h2_1.innerText = "you are grate you gut full mark"
+            h2_1.innerText = " Grate you Gut Full Mark"
         } else if (score > (questions.length * 0.5)) {
-            h2_1.innerText = "you are not bad"
-        } else { h2_1.innerText = "you are failed" }
+            h2_1.innerText = " Not bad !"
+        } else { h2_1.innerText = "You are Failed !!" }
 
         const playAgineButton = document.createElement("button")
         div_3.append(playAgineButton)
