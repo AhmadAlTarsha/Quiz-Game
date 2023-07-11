@@ -85,7 +85,7 @@ const body = document.querySelector("body")
 
 const div_2 = document.querySelector(".div_2")
 const div = document.querySelector(".box")
-let countdown = 20
+let countdown = 60
 let timeOver
 let plyer_name=","
 const startTimeer = () => {
@@ -120,7 +120,7 @@ const startTimeer = () => {
                 nextquestion = 0
 
 
-                countdown = 20
+                countdown = 60
                // startTimeer()
                 score = 0
                 viewQuestion(0)
@@ -130,10 +130,21 @@ const startTimeer = () => {
                 div.style.display="none"
                 const welcome_screen=document.createElement("div")
                 body.append(welcome_screen)
+                const Quizimage=document.createElement("img")
+                welcome_screen.append(Quizimage)
+                Quizimage.src="./Quizimage.png"
                 welcome_screen.className="welcome"
                 const welcome_p=document.createElement("h4")
+                const welcom_p2=document.createElement("h6")
+                welcom_p2.innerText="1- All questions must be answered before the end of the specified time (12 questions).2- You can answer the question only once 3- You cannot go back to the previous question   "
                 welcome_screen.append(welcome_p)
-                welcome_p.innerText="lorem"
+               
+                welcome_screen.append(welcom_p2)
+                welcome_p.innerText= "Game rules  "
+               
+            console.log(welcome_screen);
+                
+        
                 const input=document.createElement("input")
                 const lapel=document.createElement("label")
                 welcome_screen.append(lapel)
@@ -250,7 +261,7 @@ const changeQuestion = () => {
         // this condition to ensure if the num was greater of question array end the game
     } else {
         clearInterval(timeOver)
-        countdown = 20
+        countdown = 60
         document.querySelector("h3").innerText = ""
         div_2.style.display = "none"
         div.innerHTML = ""

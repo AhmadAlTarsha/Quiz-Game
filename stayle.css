@@ -98,6 +98,8 @@ h2{
 }
 
 .welcome{
+  font-family: 'Franklin Gothic Medium',
+  'Arial Narrow', Arial, sans-serif;
   border: 1px gray solid;
   border-radius: 20px;
   display: grid;
@@ -105,7 +107,7 @@ h2{
   grid-template-columns: 1fr;
   justify-content: center;
   justify-items: center;
-  gap: 30px;
+  gap: 10px;
 }
 
 @media  (max-width: 700px) {
