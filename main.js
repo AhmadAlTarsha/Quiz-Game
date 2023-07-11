@@ -46,38 +46,40 @@ let timeOver
 const startTimeer = () => {
     timeOver = setInterval(() => {
         countdown--
-        document.querySelector(".countDown").innerText = countdown
+        document.querySelector(".countDown").innerText = `Time Lift Is : ${countdown}`
         if (countdown === 0) {
+            new Audio("./endTime.wav").play()
             div.style.display = "none"
             div_2.style.display = "none"
             const resuilt = document.createElement("p")
             body.append(resuilt)
-            resuilt.innerHTML = ` time over your scoore is ${scoore}`
+            resuilt.innerHTML = ` Game time is over, Your score Is : ${score}`
             clearInterval(timeOver)
             //  document.querySelector(".box").style.d="none"     
             document.querySelector(".countDown").innerText = ""
-            //new Audio("./wrongAnswer.wav").play()
+            
             const startAgine = document.createElement("button")
-            body.append(startAgine)
+            document.querySelector(".div_4").append(startAgine)
+
             startAgine.id = "sb"
-            startAgine.innerText = "go to main "
+            startAgine.innerText = "Restart Game "
             startAgine.addEventListener("click", () => {
                 startAgine.remove()
                 resuilt.remove()
                 div_3.innerHTML = ""
                 new Audio("./playAgine.wav").play()
                 div_2.style.display = "flex"
-                document.querySelector(".box").innerHTML=""
+                document.querySelector(".box").innerHTML = ""
                 div.style.display = "grid"
-                console.log(div);
+
                 nextquestion = 0
 
 
                 countdown = 15
                 startTimeer()
-                scoore = 0
-viewQuestion(0)
-document.querySelector("#trueOrFalse").innerHTML=""
+                score = 0
+                viewQuestion(0)
+                document.querySelector("#trueOrFalse").innerHTML = ""
             })
         }
     }, 1000)
@@ -92,10 +94,10 @@ body.append(div_3)
 div_3.className = "div_3"
 const check = document.createElement("h2")
 div_2.append(check)
-check.innerText = "your answer is: "
+check.innerText = "Your Answer Is: "
 const check_1 = document.createElement("h2")
 div_2.append(check_1)
-check_1.id="trueOrFalse"
+check_1.id = "trueOrFalse"
 
 check_1.innerText = ""
 const nextButton = document.querySelector(".next")
@@ -104,7 +106,7 @@ nextButton.innerText = "next"
 
 // nextButton.className = "nextButton"
 //this scorre to sum your gride Depending on the num of true answer
-let scoore = 0
+let score = 0
 //--------render function 
 const viewQuestion = (indexofArray) => {
     nextButton.disabled = true
@@ -125,15 +127,15 @@ const viewQuestion = (indexofArray) => {
         }
 
 
-        const checkfun = function () {
+        const checkfun = () => {
 
             if (button.innerText === questions[indexofArray].correctAnswer) {
-                scoore++
+                score++
                 new Audio("./coorectAnswer.wav").play()
-                // console.log(scoore);
-                check_1.innerText = "true"
+                // console.log(score);
+                check_1.innerText = "True"
             } else {
-                check_1.innerText = "false"
+                check_1.innerText = "False"
                 new Audio("./wrongAnswer.wav").play()
             }
         }
@@ -177,18 +179,19 @@ const changeQuestion = () => {
         clearInterval(timeOver)
         countdown = 15
         document.querySelector("h3").innerText = ""
-div_2.style.display="none"
+        div_2.style.display = "none"
         div.innerHTML = ""
         //div_2.style.display=none
         const h2 = document.createElement("h2")
         div_3.append(h2)
-        h2.innerText = `your scoore is : ${scoore}/${questions.length}`
+        h2.id = "h2"
+        h2.innerText = `Your Score Is : ${score}/${questions.length}`
         const h2_1 = document.createElement("h2")
         div_3.append(h2_1)
         h2_1.innerText = ""
-        if (scoore == questions.length) {
+        if (score == questions.length) {
             h2_1.innerText = "you are grate you gut full mark"
-        } else if (scoore > (questions.length * 0.5)) {
+        } else if (score > (questions.length * 0.5)) {
             h2_1.innerText = "you are not bad"
         } else { h2_1.innerText = "you are failed" }
 
@@ -203,7 +206,7 @@ div_2.style.display="none"
             viewQuestion(0)
 
             startTimeer()
-            scoore = 0
+            score = 0
 
             //div_2.innerHTML=""
 
@@ -222,7 +225,7 @@ const veiewTruOrFalse = () => {
 nextButton.addEventListener("click", changeQuestion)
 nextButton.addEventListener("click", veiewTruOrFalse)
 nextButton.addEventListener("click", () => {
-
+    new Audio("./next.wav").play()
 })
 
 
