@@ -26,7 +26,47 @@ const questions = [
         q: "Where does Santa Claus live?",
         answers: ["Jordan", "Usa", "Brizel", "The North Pole"],
         correctAnswer: "The North Pole",
+    }
+    , {
+        id: 5,
+        q: "How many bones are there in the human body?",
+        answers: ["207", "209", "206", " 235"],
+        correctAnswer: "206",
     },
+    {
+        id: 6,
+        q: "What is the name of the actor who played Jack in Titanic?",
+        answers: ["Brad Pitt", "Johnny Depp", "George Clooney", "Leonardo DiCaprio"],
+        correctAnswer: "Leonardo DiCaprio",
+    },
+    {
+        id: 7,
+        q: "Fe is the chemical symbol for which element?",
+        answers: ["Iron", "Gold", "Platenim", "Oxegin"],
+        correctAnswer: "Iron",
+    },
+    {
+        id: 8,
+        q: "How many players are there on a baseball team??",
+        answers: ["13", "9", "8", "11"],
+        correctAnswer: "9",
+    },
+    {
+        id: 9,
+        q: " What language is the most popularly spoken worldwide?",
+        answers: ["Spanish", "English ", "Chinese", "Arabic"],
+        correctAnswer: "Chinese",
+    },
+    {
+        id: 10,
+        q: "Who founded Microsoft?",
+        answers: ["Jeff Bezos", "Bill Gates", "steve jobs", "mark zuckerberg"],
+        correctAnswer: "Bill Gates",
+    },
+  
+   
+    
+
 ];
 //first step i need to create a body by using Dom to holds all the HTML tags that i create it,
 // second step i need to create a (div) by using Dom,
@@ -39,6 +79,10 @@ const questions = [
 //then use a miltepule class fo all tags to full controls of it
 // then i must do the right design to display it 
 const body = document.querySelector("body")
+
+//body.style.display="none"
+
+
 const div_2 = document.querySelector(".div_2")
 const div = document.querySelector(".box")
 let countdown = 15
