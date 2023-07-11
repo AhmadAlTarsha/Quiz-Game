@@ -156,6 +156,7 @@ const startTimeer = () => {
                 welcome_screen.append(go)
                 go.innerText="GO"
 go.addEventListener("click",()=>{
+    new Audio("./playAgine.wav").play()
     div_2.style.display="flex"
     div_3.style.display="grid"
     div.style.display="grid"
