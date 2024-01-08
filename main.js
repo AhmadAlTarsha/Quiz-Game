@@ -6,13 +6,13 @@ const questions = [
     {
         id: 1,
         q: "What is the name of the longest river in South America?",
-        answers: ["Amazon River", "Cuanza River", "Kasai River", , "Oti River"],
+        answers: ["Amazon River", "Cuanza River", "Kasai River", , "Oti River",],
         correctAnswer: "Amazon River",
     },
     {
         id: 2,
         q: " What's the name of a place you go to see lots of animals?",
-        answers: ["The Hotel", "The zoo", "The Coffe House", "The Cinema"],
+        answers: ["The Hotel", "The zoo", "The Coffee House", "The Cinema"],
         correctAnswer: "The zoo",
     },
     {
@@ -24,7 +24,7 @@ const questions = [
     {
         id: 4,
         q: "Where does Santa Claus live?",
-        answers: ["Jordan", "Usa", "Brizel", "The North Pole"],
+        answers: ["Jordan", "Usa", "Brazil", "The North Pole"],
         correctAnswer: "The North Pole",
     }
     , {
@@ -63,9 +63,9 @@ const questions = [
         answers: ["Jeff Bezos", "Bill Gates", "steve jobs", "mark zuckerberg"],
         correctAnswer: "Bill Gates",
     },
-  
-   
-    
+
+
+
 
 ];
 //first step i need to create a body by using Dom to holds all the HTML tags that i create it,
@@ -87,7 +87,7 @@ const div_2 = document.querySelector(".div_2")
 const div = document.querySelector(".box")
 let countdown = 60
 let timeOver
-let plyer_name=","
+let plyer_name = ","
 const startTimeer = () => {
     timeOver = setInterval(() => {
         countdown--
@@ -102,7 +102,7 @@ const startTimeer = () => {
             clearInterval(timeOver)
             //  document.querySelector(".box").style.d="none"     
             document.querySelector(".countDown").innerText = ""
-            
+
             const startAgine = document.createElement("button")
             document.querySelector(".div_4").append(startAgine)
 
@@ -121,48 +121,48 @@ const startTimeer = () => {
 
 
                 countdown = 60
-               // startTimeer()
+                // startTimeer()
                 score = 0
                 viewQuestion(0)
                 document.querySelector("#trueOrFalse").innerHTML = ""
-                div_2.style.display="none"
-                div_3.style.display="none"
-                div.style.display="none"
-                const welcome_screen=document.createElement("div")
+                div_2.style.display = "none"
+                div_3.style.display = "none"
+                div.style.display = "none"
+                const welcome_screen = document.createElement("div")
                 body.append(welcome_screen)
-                const Quizimage=document.createElement("img")
+                const Quizimage = document.createElement("img")
                 welcome_screen.append(Quizimage)
-                Quizimage.src="./Quizimage.png"
-                welcome_screen.className="welcome"
-                const welcome_p=document.createElement("h4")
-                const welcom_p2=document.createElement("h6")
-                welcom_p2.innerText="1- All questions must be answered before the end of the specified time (12 questions).2- You can answer the question only once 3- You cannot go back to the previous question   "
+                Quizimage.src = "./Quizimage.png"
+                welcome_screen.className = "welcome"
+                const welcome_p = document.createElement("h4")
+                const welcom_p2 = document.createElement("h6")
+                welcom_p2.innerText = "1- All questions must be answered before the end of the specified time (12 questions).2- You can answer the question only once 3- You cannot go back to the previous question   "
                 welcome_screen.append(welcome_p)
-               
+
                 welcome_screen.append(welcom_p2)
-                welcome_p.innerText= "Game rules  "
-               
-            console.log(welcome_screen);
-                
-        
-                const input=document.createElement("input")
-                const lapel=document.createElement("label")
+                welcome_p.innerText = "Game rules  "
+
+                console.log(welcome_screen);
+
+
+                const input = document.createElement("input")
+                const lapel = document.createElement("label")
                 welcome_screen.append(lapel)
-                lapel.innerText="write Your Name"
+                lapel.innerText = "write Your Name"
                 welcome_screen.append(input)
-                input.placeholder="Optional   Field"
-                plyer_name=input.value
-                const go =document.createElement("button")
+                input.placeholder = "Optional   Field"
+                plyer_name = input.value
+                const go = document.createElement("button")
                 welcome_screen.append(go)
-                go.innerText="GO"
-go.addEventListener("click",()=>{
-    new Audio("./playAgine.wav").play()
-    div_2.style.display="flex"
-    div_3.style.display="grid"
-    div.style.display="grid"
-    startTimeer()
-    welcome_screen.innerHTML=""
-})
+                go.innerText = "GO"
+                go.addEventListener("click", () => {
+                    new Audio("./playAgine.wav").play()
+                    div_2.style.display = "flex"
+                    div_3.style.display = "grid"
+                    div.style.display = "grid"
+                    startTimeer()
+                    welcome_screen.innerHTML = ""
+                })
 
                 console.log(welcome_screen.innerHTML);
             })
@@ -228,7 +228,7 @@ const viewQuestion = (indexofArray) => {
         //-----this fun spilt the true and false answer
         // then i give the true or false answer diffirant class or id 
         // then i give each of them diffirant proparety
-        const trueOrfalse = () => {
+        const trueOrFalse = () => {
 
             nextButton.disabled = false
             document.getElementById("coorect").style.backgroundColor = "green",
@@ -239,16 +239,16 @@ const viewQuestion = (indexofArray) => {
             })
 
         }
-        button.addEventListener("click", trueOrfalse)//mice inaple
+        button.addEventListener("click", trueOrFalse)
         button.addEventListener("click", checkfun)
     })
 }
 // here i will exicute the render fun and give it 0 index to display first element of (question array)
-viewQuestion(0)
-let nextquestion = 0
 
-//----- this fun tack a num that i declerate it and add 1 evey when i exicute it
-// and pass this num to the render fun to display the elemnt of all array of question
+let nextquestion = 0
+viewQuestion(nextquestion)
+//----- this fun tack a num that i decelerate it and add 1 ever when i execute it
+// and pass this num to the render fun to display the element of all array of question
 
 const changeQuestion = () => {
     nextButton.disabled = true
@@ -282,7 +282,7 @@ const changeQuestion = () => {
 
         const playAgineButton = document.createElement("button")
         div_3.append(playAgineButton)
-        playAgineButton.innerText = "play agine"
+        playAgineButton.innerText = "play agin"
         playAgineButton.addEventListener("click", () => {
             new Audio("./playAgine.wav").play()
             div_2.style.display = "flex"
